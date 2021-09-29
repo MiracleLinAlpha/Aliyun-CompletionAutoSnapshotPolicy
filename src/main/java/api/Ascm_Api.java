@@ -24,7 +24,7 @@ public class Ascm_Api {
      		client.addHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
      		String result = client.doRequest(rp.getApiGateWay(), requestParams);
 
-     		System.out.println("GetOrganizationTree API Success!");
+//     		System.out.println("GetOrganizationTree API Success!");
      		return result;
      	} catch (Exception e) {
      		System.out.println("GetOrganizationTree API Error!");
@@ -49,7 +49,7 @@ public class Ascm_Api {
      		client.addHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
      		String result = client.doRequest(rp.getApiGateWay(), requestParams);
 
-     		System.out.println("GetUserInfo API Success!");
+//     		System.out.println("GetUserInfo API Success!");
      		return result;
      	} catch (Exception e) {
      		System.out.println("GetUserInfo API Error!");

@@ -140,11 +140,12 @@ public class start {
 
             if(count == 0)
                 System.out.println("success");
-            System.out.println("error");
+            else
+                System.out.println("Apply AutoSnapshotPolicy Error");
 
 
         }catch (Exception e) {
-            System.out.println("error");
+            System.out.println("program error");
         }
     }
 }
