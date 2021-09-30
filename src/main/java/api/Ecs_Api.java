@@ -295,12 +295,14 @@ public class Ecs_Api {
 			rpmap.put("regionId", rp.getRegionId());
 			rpmap.put("autoSnapshotPolicyId", autoSnapshotPolicyId);
 			rpmap.put("diskIds", "[\"" + diskIds + "\"]");
+//			rpmap.put("organizationId",organizationid);
 
 			ASClient client = new ASClient();
 			client.addHeader("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
 			client.addHeader("x-acs-regionid", rp.getRegionId());
 //			client.addHeader("x-acs-resourcegroupid", "");
 			client.addHeader("x-acs-organizationid", organizationid);
+			client.addHeader("x-acs-instanceId",diskIds);
 
 			String result = client.doRequest(rp.getApiGateWay(), rpmap);
 

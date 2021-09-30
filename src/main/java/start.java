@@ -102,10 +102,12 @@ public class start {
                 aspelist.add(aspe);
             }
 
+//            List<String> noneAutoList = new ArrayList<>();
 
             //筛选出未设置自动快照策略的硬盘，并设置自动快照策略
             for(int i=0;i<dilist.size();i++) {
                 if(dilist.get(i).isEnableAutomatedSnapshotPolicy() != true){
+//                    noneAutoList.add(dilist.get(i).getDiskId() + "==" + String.valueOf(dilist.get(i).getDepartment()));
                     count++;
                     a:for(orderOrgTree firstOrg:ootlist) {
                         //硬盘属于一级组织
@@ -114,7 +116,7 @@ public class start {
                                 //一级组织下有对应的自动快照策略
                                 if(aspeTemp.getDepartment() == firstOrg.getFirstOrgNum()){
                                     temp = new Ecs_Api().ApplyAutoSnapshotPolicy(rp, aspeTemp.getAutoSnapshotPolicyId(), dilist.get(i).getDiskId(), String.valueOf(aspeTemp.getDepartment()));
-                                    if(temp.contains("ode\":\"200"))
+                                    if(temp.contains("ode\":\"200") || temp.contains("ode\": \"200"))
                                         count--;
                                     break a;
                                 }
@@ -127,7 +129,7 @@ public class start {
                                     //下级组织下有对应的自动快照策略
                                     if(aspeTemp.getDepartment() == firstOrg.getFirstOrgNum()){
                                         temp = new Ecs_Api().ApplyAutoSnapshotPolicy(rp, aspeTemp.getAutoSnapshotPolicyId(), dilist.get(i).getDiskId(), String.valueOf(dilist.get(i).getDepartment()));
-                                        if(temp.contains("ode\":\"200"))
+                                        if(temp.contains("ode\":\"200") || temp.contains("ode\": \"200"))
                                             count--;
                                         break a;
                                     }
@@ -141,7 +143,12 @@ public class start {
             if(count == 0)
                 System.out.println("success");
             else
-                System.out.println("Apply AutoSnapshotPolicy Error");
+                System.out.println("Apply AutoSnapshotPolicy Error -- " + count);
+
+
+//            for(String item:noneAutoList) {
+//                System.out.println(item);
+//            }
 
 
         }catch (Exception e) {

@@ -27,4 +27,11 @@ public class orderOrgTree {
     public void setChildren(int childrenNum) {
         children.add(childrenNum);
     }
+
+    @Override
+    public String toString() {
+        return "orderOrgTree{" +
+                "children=" + children +
+                '}';
+    }
 }
